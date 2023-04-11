@@ -1,6 +1,12 @@
 package tests;
 
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.hamcrest.Matchers;
+import org.json.JSONObject;
 import org.junit.Test;
+
+import static io.restassured.RestAssured.given;
 
 public class C06_Post_ResponseBodyTesti {
 
@@ -24,7 +30,31 @@ public class C06_Post_ResponseBodyTesti {
     @Test
     public void post01() {
         // 1 - Request icin gerekli url ve Post hazirla
+    String url="https://jsonplaceholder.typicode.com/posts";
 
+        /* "title":"API",
+                "body":"API ogrenmek ne guzel",
+                "userId":10,
+
+         */
+        JSONObject reqBody=new JSONObject();
+        reqBody.put("title","API");
+        reqBody.put("body","API ogrenmek ne guzel");
+        reqBody.put("userId",10);
+        System.out.println("reqBody : " + reqBody);
+
+        // 2- Expected Data Hazirla
+
+        // 3 - Response i kaydet
+        Response response = given().contentType(ContentType.JSON)
+                             .when()
+                                    .body(reqBody.toString()).post(url);
+
+        // 4 - Assertion i hazirla
+        response.then().assertThat().statusCode(201).contentType("application/json").
+                body("title", Matchers.equalTo("API")).
+                body("userId",Matchers.lessThan(100)).
+                body("body",Matchers.containsString("API"));
 
 
     }
