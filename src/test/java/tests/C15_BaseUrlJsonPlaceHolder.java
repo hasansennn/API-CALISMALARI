@@ -1,7 +1,7 @@
 package test;
 
 
-import baseUrl.JsonPlaceHolderBaseURL;
+import BaseUrl.JsonPlaceHolderBaseURL;
 import io.restassured.response.Response;
 import org.junit.Test;
 

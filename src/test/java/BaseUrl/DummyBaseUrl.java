@@ -1,4 +1,4 @@
-package baseURL;
+package BaseUrl;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;

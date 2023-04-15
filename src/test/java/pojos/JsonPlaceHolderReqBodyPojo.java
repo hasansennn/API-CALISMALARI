@@ -12,7 +12,6 @@ public class JsonPlaceHolderReqBodyPojo {
      */
 
 
-
     // 1 - Tum key degerlerini class levelda, aldiklari data
     // turune gore private variable olarak olusturalim
 
